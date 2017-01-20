@@ -67,13 +67,13 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name" : "Sanket Meshram",
 	"role" : "role",
-	// "contact" {
-	// 	"mobile" : 9029493678,
-	// 	"email" : "",
-	// 	"github" : "",
-	// 	"twitter" : "",
-	// 	"location" : ""
-	// },
+	"contact" : {
+		"mobile" : 9029493678,
+		"email" : "",
+		"github" : "",
+		"twitter" : "",
+		"location" : ""
+	},
 	"welcomeMessage" : "Hiii",
 	"age" : 27,
 	"skills" : ["awesomeness", "programming" ,"teaching", "js"],
@@ -93,7 +93,7 @@ var work = {
 		{
 			"employer" : "company1",
 			"title" : "Manager",
-			"location" : "Mumbai",
+			"location" : "Bay area",
 			"dates" : "23/0/2015",
 			"description" : "Challeng1"
 
@@ -101,7 +101,7 @@ var work = {
 		{
 			"employer" : "company2",
 			"title" : "Manager2",
-			"location" : "Delhi",
+			"location" : "New York",
 			"dates" : "23/0/2016",
 			"description" : "Challeng2"
 
@@ -152,7 +152,7 @@ var work = {
 // 	"schools" : [
 // 	{
 // 		"name" : "MSAS",
-// 		"location" : "N M",
+// 		"location" : "navi Mumbai",
 // 		"degree dates" : "",
 // 		"url" :
 // 	},
@@ -244,7 +244,7 @@ if(bio.skills.length!=0)
 // 		console.log(myObj[key]);
 // 	}
 // }
-
+displayWork();
 function displayWork(){
 // using for in
 var job = 0;
@@ -267,7 +267,7 @@ for (job in work.jobs) {
 
 }
 
-//9/16 click locations
+// //9/16 click locations
 
 $(document).click(function(loc) {
 	var x = event.pageX;
@@ -312,3 +312,46 @@ $("#main").append(internationalizeButton);
 var na = inName(name);
 
 console.log(na);
+
+
+
+// // project object
+
+var projects = {
+	"projects" :[
+		{
+			"title" : "Work1",
+			"dates" : "23/11/2015",
+			"description" : "good",
+			"image" : 'images/197x148.gif'
+		},
+		{
+			"title" : "Work2",
+			"dates" : "23/11/2016",
+			"description" : "good,excelled",
+			"image" : 'images/197x148.gif'
+
+		}
+	]
+}
+
+// 12/16 Encapsulation
+// console.log(projects.projects[0].image);
+projects.display = function(){
+	for( project in projects.projects){
+		$("#projects").append(HTMLprojectStart);
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].image);
+		var formattedAll = formattedTitle + formattedDates + formattedDescription + formattedImage;
+		console.log(formattedImage);
+
+		$(".project-entry:last").append(formattedAll);
+	}
+}
+
+projects.display();
+
+// adding google maps to tag the places I have worked in
+$("#mapDiv").append(googleMap);
