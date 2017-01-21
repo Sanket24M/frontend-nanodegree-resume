@@ -3,8 +3,8 @@
 
  
 	var bio = {	
-		"name" : "Sanket",
-		"role" : "Web Developer",
+		"name" : "Sanket Meshram",
+		"role" : "Full Stack Developer",
 		"contacts" : [{
 			"mobile" : 9090909090,
 			"email" : "sanketm4u@gmail.com",
@@ -13,9 +13,9 @@
 			"location" : "Mumbai"
 		}],	
 		"welcomeMessage" : 
-		"Hiii Welcome to My resume page",
+		"Stories of Galadriel's life prior to The Lord of the Rings appear in both The Silmarillion and Unfinished Tales. Galadriel was the only daughter and youngest child of Finarfin, prince of the Noldor, and of Eärwen, who was cousin to Lúthien. Her elder brothers were Finrod Felagund, Angrod, and Aegnor. She was born in Valinor during the Years of the Trees.",
 		"bioPic" : 'images/fry.jpg',
-		"skills" : ["awesomeness", "programming" ,"teaching", "js"]
+		"skills" : ["Kind", "Considerate" ,"Persistent", "Being Contented"]
 	};
 
 
@@ -49,19 +49,19 @@ bio.display();
 var work = {
 	"jobs" : [
 		{
-			"employer" : "company1",
-			"title" : "Manager",
-			"location" : "Bay area",
-			"dates" : "23/0/2015",
-			"description" : "Challeng1"
+			"employer" : "Hogwards",
+			"title" : "Full Stack Dev",
+			"location" : "Delhi",
+			"dates" : "2015",
+			"description" : "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness."
 
 		},
 		{
-			"employer" : "company2",
-			"title" : "Manager2",
-			"location" : "New York",
-			"dates" : "23/0/2016",
-			"description" : "Challeng2"
+			"employer" : "E-commerce",
+			"title" : "Full Stack Dev",
+			"location" : "Bangalore",
+			"dates" : "2016",
+			"description" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring. "	
 
 		},
 	]
@@ -91,16 +91,16 @@ work.display();
 var projects = {
 	"projects" :[
 		{
-			"title" : "Work1",
+			"title" : "The Hobbit: The Desolation of Smaug ",
 			"dates" : "23/11/2015",
-			"description" : "good",
-			"image" : 'images/197x148.gif'
+			"description" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring.", 
+			"images" : ["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg"]
 		},
 		{
-			"title" : "Work2",
-			"dates" : "23/11/2016",
-			"description" : "good,excelled",
-			"image" : 'images/197x148.gif'
+			"title" : "The Hobbit: The Battle of the Five Armies",
+			"dates" : "2014",
+			"description" : "Bilbo and Company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.", 
+			"images" : ["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg"]
 
 		}
 	]
@@ -112,32 +112,42 @@ projects.display = function() {
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
 		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
 		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-		var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].image);
-		var formattedData = formattedTitle + formattedDates + formattedDescription + formattedImage;
+		// var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].image);
+		var formattedData = formattedTitle + formattedDates + formattedDescription ;
+		// + formattedImage;
 		$(".project-entry:last").append(formattedData);
+		for (image in projects.projects[project].images) {
+			var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);
+			$(".project-entry:last").append(formattedImage);
+		};
 	}
 };
 
 projects.display();
 
+
+// education object
+
 var education = {
 	"schools" : [
 	{
-		"name" : "MGM",
+		"name" : "Mahatma Gandhi Mission's College Of Engineering",
 		"location" : "Navi Mumbai",
-		"degree" : "Engineering",
-		"major" : "Computer Engineering"
+		"degree" : "Bachelor of Engineering",
+		"major" : "Computer Engineering",
+		"dates" : "2015"
 	},
 	{
 		"name" : "Mumbai University",
 		"location" : "Navi Mumbai",
 		"degree" : "Master in Business Administration",
-		"major" :	"Finance"
+		"major" : "Finance",
+		"dates" : "2017"
 	}],
 	"onlineCourses" : [
 		{
 		"title" : "Front-End Web Developer Nanodegree",
-		"school" : "udacity",
+		"school" : "Udacity",
 		"dates" : "2016 - 2017",
 		"url" : "https://www.udacity.com/course/nd001"
 	}]
@@ -150,9 +160,10 @@ education.display = function() {
 		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
 		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-		var formattedData = formattedName +  formattedLocation + formattedDegree + formattedMajor;
+		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		var formattedData = formattedName + formattedLocation + formattedDegree + formattedDates + formattedMajor;
 		$(".education-entry:last").append(formattedData);
-		console.log(formattedData);	
+		// console.log(formattedData);	
 	}
 	for(course in education.onlineCourses) {
 		$("#education").append(HTMLschoolStart);
@@ -160,13 +171,25 @@ education.display = function() {
 		var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
 		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
 		var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
-		var formattedData = HTMLonlineClasses + formattedTitle + formattedSchool + formattedDates + formattedUrl; 
+		var formattedData = HTMLonlineClasses + formattedTitle + formattedSchool  + formattedDates  + formattedUrl; 
 		$(".education-entry:last").append(formattedData);
+		// console.log(formattedSchool);
 	}
 };
 
 education.display();
 
+$("#main").append(internationalizeButton);
+   function inName(name) {
+	var n = name;
+	var w = n.indexOf(' ');
+	name = n.charAt(0).toUpperCase() + n.slice(1,w).toLowerCase() + ' ' + n.slice((w+1)).toUpperCase();
+	return(name);
+	console.log(name);
+}
+var na = inName(name);
+
+$("#mapDiv").append(googleMap);
 
 	// if(bio.skills.length!=0)
 // 	{
@@ -184,7 +207,6 @@ education.display();
 	
 
 // }
-
 
 // 		$("#topContacts").append(formattedPic);
 	// 		$("#topContacts").append(formattedMsg);
